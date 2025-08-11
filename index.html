@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kancelaria Solatus - Adwokaci | Grodzisk</title>
+  <meta name="description" content="Kancelaria Solatus — prawo, doświadczenie i profesjonalizm. Siedziba: Stary Rynek 15, Grodzisk. Skuteczne wsparcie prawne i indywidualne podejściem.">
+  <meta name="author" content="Kancelaria Solatus">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220; --card:#071126; --accent:#7c3aed; --accent-2:#06b6d4; --muted:#9aa7bd; --glass: rgba(255,255,255,0.04);
+      --maxw:1200px; --radius:16px; --radius-lg:22px; --gap:18px;
+      color-scheme: dark;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --transition: 0.36s cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* Base reset */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#040715 0%, #071227 60%);color:#e6eef8;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;gap:16px;padding:12px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:26px;box-shadow:0 10px 30px rgba(7,12,30,0.6)}
+    .nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+    .nav a{padding:10px 14px;border-radius:10px;font-weight:700}
+    .nav a:hover{background:rgba(255,255,255,0.025)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:start;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius-lg);padding:26px;box-shadow:0 14px 40px rgba(2,6,23,0.6)}
+
+    .hero h1{font-size:36px;margin:0 0 8px}
+    .lead{color:var(--muted);line-height:1.6}
+    .kpis{display:flex;gap:12px;margin-top:18px}
+    .kpi{flex:1;padding:12px;border-radius:12px;background:rgba(255,255,255,0.01);text-align:center}
+    .kpi strong{display:block;font-size:20px}
+
+    /* Services grid */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .service{padding:18px;border-radius:12px;background:rgba(255,255,255,0.01)}
+    .service h3{margin:0 0 8px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Team */
+    .team{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .person{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.007));text-align:center}
+    .person img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+    .person h4{margin:8px 0 4px}
+    .person p{margin:0;color:var(--muted);font-size:13px}
+
+    /* FAQ */
+    .faq{margin-top:18px}
+    .faq-item{background:rgba(255,255,255,0.01);padding:12px;border-radius:10px;margin-bottom:10px}
+    .faq-item summary{cursor:pointer;font-weight:700}
+
+    /* Testimonials carousel (simple) */
+    .testimonials{display:flex;gap:12px;overflow:auto;padding-bottom:6px}
+    .testimonial{min-width:320px;padding:16px;border-radius:12px;background:rgba(255,255,255,0.01)}
+
+    /* Contact form */
+    form{display:flex;flex-direction:column;gap:12px}
+    input,textarea,select{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:10px;color:inherit;font-size:15px}
+    label{font-size:13px;color:var(--muted)}
+    .row{display:flex;gap:12px}
+    .row .col{flex:1}
+
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:12px 18px;border-radius:12px;color:white;font-weight:700;border:0;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Footer */
+    footer{margin-top:26px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));display:flex;justify-content:space-between;align-items:center}
+
+    /* Utilities */
+    .small{font-size:13px;color:var(--muted)}
+    .accent{color:var(--accent);font-weight:700}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:700}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:28px;background:rgba(2,6,23,0.6);visibility:hidden;opacity:0;transition:all var(--transition)}
+    .modal.show{visibility:visible;opacity:1}
+    .modal .dialog{background:var(--card);padding:22px;border-radius:14px;max-width:720px;width:100%}
+
+    /* responsive */
+    @media (max-width:1100px){.hero{grid-template-columns:1fr 360px}.team{grid-template-columns:repeat(3,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:780px){.hero{grid-template-columns:1fr}.team{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:1fr}.nav{display:none}}
+
+    /* Print styles */
+    @media print{body{background:white;color:black}header,footer,.btn{display:none}.card{box-shadow:none}}
+
+    /* tiny animations */
+    .card{transition:transform .45s cubic-bezier(.2,.9,.2,1),box-shadow .45s}
+    .card:hover{transform:translateY(-6px)}
+
+    /* accessibility focus */
+    :focus{outline:3px solid rgba(124,58,237,0.22);outline-offset:3px}
+
+    /* cookie bar */
+    .cookie{position:fixed;left:18px;right:18px;bottom:18px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;justify-content:space-between;gap:12px;align-items:center}
+
+
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LegalService",
+    "name":"Kancelaria Solatus",
+    "description":"Kancelaria Solatus to miejsce, gdzie prawo spotyka się z doświadczeniem i profesjonalizmem. Siedziba w Grodzisku.",
+    "image":"https://example.com/logo.png",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Stary Rynek 15",
+      "addressLocality":"Grodzisk",
+      "addressCountry":"PL"
+    },
+    "telephone":"+48 000 000 000",
+    "url":"https://example.com"
+  }
+  
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header role="banner" aria-label="Główne menu">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">S</div>
+        <div>
+          <div style="font-weight:800">Kancelaria Solatus</div>
+          <div class="small">Prawo • Doświadczenie • Profesjonalizm</div>
+        </div>
+      </div>
+
+      <nav class="nav" role="navigation" aria-label="Nawigacja strony">
+        <a href="#o-nas">O nas</a>
+        <a href="#uslugi">Usługi</a>
+        <a href="#zespol">Zespół</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt" class="btn ghost">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <article class="card" aria-labelledby="hero-title">
+          <h1 id="hero-title">Kancelaria Solatus - prawo, które rozumie ludzi</h1>
+          <p class="lead">Specjalizujemy się w prawie cywilnym, rodzinnym i gospodarczym. Działamy z empatią, jasno i efektywnie. Naszym priorytetem jest dobro klienta i skuteczne rozwiązania - od pierwszej porady do zakończenia sprawy.</p>
+
+          <div class="kpis" role="list">
+            <div class="kpi" role="listitem"><strong>+500</strong><div class="small muted">prowadzone sprawy</div></div>
+            <div class="kpi" role="listitem"><strong>98%</strong><div class="small muted">pozytywnych opinii</div></div>
+            <div class="kpi" role="listitem"><strong>15 lat</strong><div class="small muted">doświadczenia</div></div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:18px">
+            <button class="btn" onclick="document.getElementById('kontakt-form').scrollIntoView({behavior:'smooth'})">Umów bezpłatną konsultację</button>
+            <a href="#uslugi" class="btn ghost">Zobacz pełną ofertę</a>
+          </div>
+
+          <div style="margin-top:18px">
+            <h3>Dlaczego Klienci wybierają Solatus</h3>
+            <ul class="muted">
+              <li>Transparentna komunikacja i jasne rozliczenia</li>
+              <li>Indywidualna strategia procesu</li>
+              <li>Wsparcie na każdym etapie postępowania</li>
+            </ul>
+          </div>
+        </article>
+
+        <aside class="card" aria-labelledby="kontakt">
+          <h2 id="kontakt">Kontakt & Szybkie informacje</h2>
+          <p style="font-weight:700">Kancelaria Solatus</p>
+          <p class="muted">Stary Rynek 15, 05-000 Grodzisk</p>
+          <p class="muted">Telefon: <a href="tel:+48000000000">+48 000 000 000</a></p>
+          <p class="muted">Email: <a href="kontakt@solatus.example">kontakt@solatus.example</a></p>
+
+          <div style="margin-top:12px">
+            <small class="small muted">Godziny pracy</small>
+            <div class="muted">Pon. - Pt. 09:00 - 17:00 </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn" onclick="openMap()">Pokaż na mapie</button>
+            <button class="btn ghost" onclick="openModal('map')">Szczegóły dojazdu</button>
+          </div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.02)">
+          <div class="small muted">Szybkie linki</div>
+          <ul style="padding-left:18px;margin:6px 0 0" class="muted small">
+            <li><a href="#cennik">Cennik orientacyjny</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#o-nas">O nas</a></li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- O nas -->
+      <section id="o-nas" class="card" style="margin-top:18px">
+        <h2>O nas</h2>
+        <p class="lead">Kancelaria Solatus to zespół adwokatów i doradców z wieloletnim doświadczeniem w obsłudze klientów indywidualnych i biznesowych. Stawiamy na skuteczność, transparentność i empatię. Każdą sprawę traktujemy indywidualnie - opracowujemy strategię dopasowaną do potrzeb klienta oraz realnych celów.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px">
+          <div>
+            <h3>Nasze wartości</h3>
+            <ul class="muted">
+              <li>Rzetelność i uczciwość</li>
+              <li>Profesjonalizm i kompetencja</li>
+              <li>Skupienie na kliencie</li>
+              <li>Efektywność działań</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Co nas wyróżnia</h3>
+            <p class="muted">Łączymy doświadczenie procesowe z praktycznym podejściem do biznesu. Doradzamy, zapobiegamy sporom i reprezentujemy klientów przed sądami oraz instytucjami. Naszym celem jest maksymalizacja korzyści przy minimalizacji ryzyka.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usługi -->
+      <section id="uslugi" style="margin-top:18px">
+        <div class="card">
+          <h2>Usługi</h2>
+          <p class="muted">Kompleksowa obsługa prawna dla osób prywatnych i firm.</p>
+
+          <div class="services-grid" style="margin-top:12px">
+            <div class="service">
+              <h3>Prawo cywilne</h3>
+              <p class="muted">Odszkodowania, sprawy majątkowe, sporządzanie i opiniowanie umów, sprawy nieruchomościowe.</p>
+              <details class="muted" style="margin-top:8px"><summary>Przykładowe działania</summary>
+                <ul>
+                  <li>Przygotowanie pozwu</li>
+                  <li>Negocjacje ugodowe</li>
+                  <li>Analiza umów i ryzyk</li>
+                </ul>
+              </details>
+            </div>
+
+            <div class="service">
+              <h3>Prawo rodzinne</h3>
+              <p class="muted">Rozwody, alimenty, kontakty z dziećmi, podział majątku - wsparcie na każdym etapie.</p>
+              <details class="muted" style="margin-top:8px"><summary>W czym pomagamy?</summary>
+                <ul>
+                  <li>Przygotowanie pozwu rozwodowego</li>
+                  <li>Negocjacje ugód</li>
+                  <li>Reprezentacja w sądzie</li>
+                </ul>
+              </details>
+            </div>
+
+            <div class="service">
+              <h3>Prawo gospodarcze</h3>
+              <p class="muted">Obsługa przedsiębiorców - umowy, spory handlowe, restrukturyzacje, obsługa korporacyjna.</p>
+              <details class="muted" style="margin-top:8px"><summary>Przykładowe działania</summary>
+                <ul>
+                  <li>Tworzenie umów handlowych</li>
+                  <li>Doradztwo korporacyjne</li>
+                  <li>Reprezentacja w sporach gospodarczych</li>
+                </ul>
+              </details>
+            </div>
+
+            <div class="service">
+              <h3>Własność intelektualna</h3>
+              <p class="muted">Ochrona znaków towarowych, prawa autorskie, umowy licencyjne.</p>
+            </div>
+
+            <div class="service">
+              <h3>Windykacja</h3>
+              <p class="muted">Skuteczne działania windykacyjne - od wezwań po postępowania sądowe i egzekucyjne.</p>
+            </div>
+
+            <div class="service">
+              <h3>Obsługa start-upów</h3>
+              <p class="muted">Wsparcie w zakładaniu spółek, finansowaniach i umowach inwestycyjnych.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cennik -->
+      <section id="cennik" class="card" style="margin-top:18px">
+        <h2>Cennik (pełny - aktualne stawki)</h2>
+        <p class="muted">Poniżej prezentujemy pełny cennik dostępny na stronie kancelarii. Ceny mają charakter orientacyjny i mogą ulec zmianie w zależności od złożoności sprawy.</p>
+
+        <h3 style="margin-top:12px">Dokumenty i porady</h3>
+        <ul class="muted">
+          <li>Porada prawna ustna (do 30 min) - <strong>200–300 zł</strong></li>
+          <li>Porada prawna (do 60 min, z analizą) - <strong>300–500 zł</strong></li>
+          <li>Sporządzenie opinii prawnej - <strong>od 600 zł</strong></li>
+          <li>Sporządzenie wezwania do zapłaty - <strong>250–400 zł</strong></li>
+          <li>Sporządzenie umowy (prosta) - <strong>400–600 zł</strong></li>
+          <li>Sporządzenie umowy (złożona/handlowa) - <strong>700–1500 zł</strong></li>
+          <li>Analiza umowy (do 5 stron) - <strong>300–500 zł</strong></li>
+          <li>Analiza umowy (rozszerzona, z komentarzem) - <strong>od 600 zł</strong></li>
+        </ul>
+
+        <h3 style="margin-top:12px">Postępowania sądowe - cywilne / spadkowe / rodzinne</h3>
+        <ul class="muted">
+          <li>Pozew o zapłatę - <strong>500–1500 zł</strong></li>
+          <li>Pozew rozwodowy bez orzekania o winie - <strong>1200–2000 zł</strong></li>
+          <li>Pozew rozwodowy z orzekaniem o winie - <strong>2500–4000 zł</strong></li>
+          <li>Sprawa o alimenty - <strong>800–1500 zł</strong></li>
+          <li>Sprawa o kontakty z dzieckiem - <strong>1200–2500 zł</strong></li>
+          <li>Sprawa o podział majątku - <strong>od 3000 zł</strong></li>
+          <li>Postępowanie spadkowe - <strong>od 1000 zł</strong></li>
+          <li>Wniosek o stwierdzenie nabycia spadku - <strong>600–1000 zł</strong></li>
+        </ul>
+
+        <h3 style="margin-top:12px">Postępowania karne</h3>
+        <ul class="muted">
+          <li>Obrona w sprawie o wykroczenie - <strong>800–1200 zł</strong></li>
+          <li>Obrona w sprawie karnej (postępowanie przygotowawcze) - <strong>od 1500 zł</strong></li>
+          <li>Obrona w sprawie karnej (całość) - <strong>od 4000 zł</strong></li>
+          <li>Apelacja / zażalenie - <strong>od 800 zł</strong></li>
+        </ul>
+
+        <h3 style="margin-top:12px">Obsługa firm i spółek</h3>
+        <ul class="muted">
+          <li>Rejestracja spółki z o.o. (KRS, umowa, wniosek) - <strong>1200–2500 zł</strong></li>
+          <li>Stała obsługa prawna firmy (abonament miesięczny):</li>
+          <ul class="muted" style="margin-left:18px">
+            <li>mikrofirma: <strong>800–1500 zł / mies.</strong></li>
+            <li>mała/średnia: <strong>1500–5000 zł / mies.</strong></li>
+          </ul>
+          <li>Przygotowanie regulaminu sklepu internetowego - <strong>800–1500 zł</strong></li>
+          <li>Sporządzenie umowy handlowej / B2B - <strong>od 800 zł</strong></li>
+        </ul>
+
+        <h3 style="margin-top:12px">Administracja i inne</h3>
+        <ul class="muted">
+          <li>Wniosek do organu administracyjnego - <strong>400–800 zł</strong></li>
+          <li>Skarga do WSA - <strong>1500–2500 zł</strong></li>
+          <li>Reprezentacja w sprawie administracyjnej - <strong>od 1500 zł</strong></li>
+        </ul>
+
+        <h3 style="margin-top:12px">Inne usługi</h3>
+        <ul class="muted">
+          <li>Pełnomocnictwo - zwykłe - <strong>50–150 zł</strong> / notarialne przygotowanie - <strong>100–300 zł</strong></li>
+          <li>Wniosek o upadłość konsumencką - <strong>1500–2500 zł</strong></li>
+          <li>Wniosek o dozór elektroniczny / odroczenie kary - <strong>od 800 zł</strong></li>
+        </ul>
+
+        <h3 style="margin-top:12px">Oprocentowanie i raty</h3>
+        <p class="muted">Wariant podstawowy:<br>
+          Liczba rat: do 3 - Oprocentowanie: <strong>0%</strong>.<br>
+          Wariant rozszerzony (więcej niż 3 rat): 4-6 rat: +5% do całkowitej kwoty; 7–12 rat: +8% do całkowitej kwoty.</p>
+
+        <details style="margin-top:12px" class="muted"><summary>Wycena szczegółowa</summary>
+          <p class="muted">Skontaktuj się z nami, aby otrzymać szczegółową wycenę. Oferujemy różne modele rozliczeń: godzinowy, ryczałt oraz success fee (w wybranych sprawach).</p>
+        </details>
+      </section>
+
+      <!-- Zespół -->
+      <section id="zespol" style="margin-top:18px">
+        <h2 class="card" style="padding:18px 24px;margin:0">Nasz zespół</h2>
+        <div class="team" style="margin-top:12px">
+          <div class="person">
+            <img src="https://cdn.discordapp.com/attachments/1352993953150140486/1404385667617783959/image.png?ex=689aff93&is=6899ae13&hm=d6746faac2d36a6a377fe1d5026534b80ec79a2e1fdc69555f99b1c637f063c4&" alt="dr. Szeliga">
+            <h4>dr. Kajetan Szeliga</h4>
+            <p>Prezes kancelarii oraz dziekan ORA. 12 lat doświadczenia.</p>
+          </div>
+         
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section style="margin-top:18px">
+        <h2 class="card" style="padding:18px 24px;margin:0">Opinie klientów</h2>
+        <div class="testimonials" style="margin-top:12px">
+          <div class="testimonial card">
+            <p>"Profesjonalna pomoc i szybki kontakt. Dzięki Kancelarii Solatus wygrałem trudną sprawę sądową."</p>
+            <div class="small muted" style="margin-top:8px">- Michał, Grodzisk</div>
+          </div>
+          <div class="testimonial card">
+            <p>"Empatyczne podejście i konkretne, praktyczne rozwiązania. Polecam."</p>
+            <div class="small muted" style="margin-top:8px">- Anna, Warszawa</div>
+          </div>
+          <div class="testimonial card">
+            <p>"Rzetelna obsługa firmy - doradztwo na wysokim poziomie."</p>
+            <div class="small muted" style="margin-top:8px">- DHL</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="card" style="margin-top:18px">
+        <h2>Najczęściej zadawane pytania</h2>
+        <div class="faq" style="margin-top:12px">
+          <details class="faq-item"><summary>Jak umówić się na konsultację?</summary>
+            <div class="muted">Najłatwiej przez formularz kontaktowy na stronie lub telefonicznie pod numerem +48 000 000 000.</div>
+          </details>
+
+          <details class="faq-item"><summary>Ile kosztuje pierwsza porada?</summary>
+            <div class="muted">Orientacyjna cena porady to 150 zł. W niektórych przypadkach oferujemy pierwszą krótką konsultację online bezpłatnie — sprawdź aktualne promocje.</div>
+          </details>
+
+          <details class="faq-item"><summary>Czy reprezentujecie klientów przed sądem?</summary>
+            <div class="muted">Tak. Reprezentujemy klientów w postępowaniach sądowych na każdym etapie, w tym w apelacjach.</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Kontakt / Formularz -->
+      <section id="kontakt-form" style="margin-top:18px">
+        <div class="card">
+          <h2>Skontaktuj się</h2>
+          <p class="muted">Wypełnij formularz, a oddzwonimy w ciągu 24 godzin roboczych.</p>
+
+          <!-- FORM: wysyłka do Formspree, pole "telefon" usunięte, zamiast email — Nick Discord -->
+          <form id="contactForm" action="https://formspree.io/f/mldlavvz" method="POST">
+            <div class="row">
+              <div class="col">
+                <label for="name">Imię i nazwisko</label>
+                <input id="name" name="name" type="text" required placeholder="Jan Kowalski">
+              </div>
+              <div class="col">
+                <!-- pole telefon usunięte zgodnie z prośbą -->
+                <label for="service">Usługa (opcjonalnie)</label>
+                <select id="service" name="service">
+                  <option value="">Wybierz</option>
+                  <option>Prawo cywilne</option>
+                  <option>Prawo rodzinne</option>
+                  <option>Prawo gospodarcze</option>
+                  <option>Inne</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="discord">Nick Discord</label>
+            <input id="discord" name="discord" type="text" placeholder="Nick#1234" required>
+
+            <label for="message">Krótki opis sprawy</label>
+            <textarea id="message" name="message" rows="5" placeholder="Opisz najważniejsze informacje..."></textarea>
+
+            <!-- dodatkowe ukryte pola Formspree (opcjonalne) -->
+            <input type="hidden" name="_subject" value="Zapytanie ze strony: Solatus">
+            <input type="hidden" name="_language" value="pl">
+
+            <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:8px">
+              <div class="small muted">Klikając wyślij zgadzasz się na przetwarzanie danych osobowych.</div>
+              <button class="btn" type="submit">Wyślij zapytanie</button>
+            </div>
+          </form>
+
+          <p class="small muted" style="margin-top:10px">Po wysyłce otrzymasz potwierdzenie na adres powiązany z Twoim kontem Formspree — jeśli chcesz otrzymać dodatkowy kontakt, wpisz Nick Discord w polu powyżej.</p>
+        </div>
+      </section>
+
+      <!-- Map & dojazd -->
+      <section style="margin-top:18px">
+        <div class="card">
+          <h2>Dojazd i mapa</h2>
+          <p class="muted">Znajdujemy się przy Starym Rynku 15. Możliwość parkowania w pobliskich strefach. Poniżej mapa z możliwością powiększenia.</p>
+
+          <div style="margin-top:12px;border-radius:12px;overflow:hidden">
+            <!-- placeholder iframe map -->
+            <iframe src="https://www.google.com/maps?q=Stary+Rynek+15+Grodzisk&output=embed" title="Mapa - Kancelaria Solatus" style="width:100%;height:360px;border:0"></iframe>
+          </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+      <div>
+        <div style="font-weight:800">Kancelaria Solatus</div>
+        <div class="small muted">Stary Rynek 15, 05-000 Grodzisk • Tel: +48 000 000 000</div>
+        <div class="small muted" style="margin-top:6px">Zarejestrowana w Rejestrze Adwokatów • NIP: 000-000-00-00</div>
+      </div>
+      <div style="text-align:right">
+        <div class="small muted">© <span id="year"></span> Kancelaria Solatus</div>
+        <div style="margin-top:6px"><a href="#privacy" class="small muted">Polityka prywatności</a> • <a href="#regulamin" class="small muted">Regulamin</a></div>
+      </div>
+    </footer>
+
+    <!-- Cookie bar -->
+    <div id="cookie" class="cookie" role="region" aria-label="Cookie banner">
+      <div class="small muted">Używamy plików cookie w celu poprawy jakości usług. Kontynuując korzystanie ze strony zgadzasz się na naszą politykę prywatności.</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn ghost" onclick="openModal('cookies')">Dowiedz się więcej</button>
+        <button class="btn" onclick="acceptCookies()">Akceptuję</button>
+      </div>
+    </div>
+
+    <!-- Modal skeleton -->
+    <div id="modal" class="modal" role="dialog" aria-hidden="true">
+      <div class="dialog" role="document">
+        <button style="float:right" onclick="closeModal()" aria-label="Zamknij">✕</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // small JS helpers and front-end interactions
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function openMap(){
+      window.open('https://www.google.com/maps/search/?api=1&query=Stary+Rynek+15+Grodzisk','_blank');
+    }
+
+    // Modal
+    function openModal(type){
+      var modal = document.getElementById('modal');
+      var content = document.getElementById('modal-content');
+      if(type === 'map'){
+        content.innerHTML = '<h3>Dojazd</h3><p class="muted">Dojazd samochodem: ul. Centralna — parking 200m. Komunikacja miejska: przystanek "Rynek" 3 minuty piechotą.</p>';
+      } else if(type === 'cookies'){
+        content.innerHTML = '<h3>Polityka cookies</h3><p class="muted">Na stronie używamy plików cookie do podstawowych funkcji, analityki i poprawy jakości usług. Możesz wybrać ustawienia w swojej przeglądarce.</p>';
+      } else {
+        content.innerHTML = '<p class="muted">Szczegóły</p>';
+      }
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      var modal = document.getElementById('modal');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    // Cookies
+    function acceptCookies(){
+      try{localStorage.setItem('solatus_cookies','accepted');}catch(e){}
+      var el = document.getElementById('cookie'); if(el) el.style.display='none';
+    }
+    // hide cookie if previously accepted
+    try{ if(localStorage.getItem('solatus_cookies')==='accepted'){document.getElementById('cookie').style.display='none'} }catch(e){}
+
+    // remove old JS form submit - form submits directly to Formspree
+
+    function downloadDummy(filename){
+      // create a simple text blob and download — demo only
+      var blob = new Blob(['To jest przykładowy plik: '+filename],{type:'application/pdf'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){URL.revokeObjectURL(url)},1000);
+    }
+
+    // accessibility: close modal on Escape
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+    // lightweight carousel auto-scroll for testimonials
+    (function autoScrollTestimonials(){
+      var el = document.querySelector('.testimonials');
+      if(!el) return;
+      var speed = 1; // pixels per 20ms
+      setInterval(function(){
+        el.scrollLeft += speed;
+        if(el.scrollLeft + el.clientWidth >= el.scrollWidth - 1) el.scrollLeft = 0;
+      },20);
+    })();
+
+    // basic form of progressive enhancement: detect JS enabled
+    document.documentElement.classList.add('js');
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const content = document.getElementById('umowa');
+
+    html2canvas(content, { scale: 2 }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 40; // margines po 20 po bokach
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      doc.addImage(imgData, 'PNG', 20, 20, pdfWidth, pdfHeight);
+      doc.save('umowa-uslug-prawnych.pdf');
+    });
+  });
+</script>
+
+  </script>
+</body>
+</html>
+
+
